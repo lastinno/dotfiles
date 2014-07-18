@@ -14,7 +14,7 @@ co = checkout
 ci = commit
 br = branch
 re = reset
-di = diff
+df = diff
 log = log -p
 
 [color]
