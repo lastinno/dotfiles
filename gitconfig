@@ -14,6 +14,7 @@ co = checkout
 ci = commit
 br = branch
 re = reset
+rb = rebase
 df = diff
 log = log -p
 
