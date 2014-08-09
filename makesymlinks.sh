@@ -14,6 +14,7 @@ files="bashrc
        bash_alias 
        vimrc 
        gvimrc 
+       inputrc
        gitconfig
 	   gitignore
       " 
