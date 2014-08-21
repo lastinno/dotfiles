@@ -18,7 +18,7 @@ rb = rebase
 df = diff
 d = difftool
 log = log -p
-graph = log --graph --date-order -C -M --pretty=format:"<%h> %ad [%an] %Cgreen%d%Creset %s" --all --date=short
+graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 
 [color]
 status = auto
