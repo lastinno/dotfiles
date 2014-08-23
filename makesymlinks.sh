@@ -15,6 +15,7 @@ files="bashrc
        vimrc 
        gvimrc 
        inputrc
+       tmux.conf
        gitconfig
 	   gitignore
       " 
