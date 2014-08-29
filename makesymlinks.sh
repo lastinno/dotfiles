@@ -11,10 +11,11 @@ olddir=~/dotfiles_old             # old dotfiles backup directory
 
 # list of files/folders to symlink in homedir
 files="bashrc
-       bash_alias 
+       bash_aliases
        vimrc 
        gvimrc 
        inputrc
+	   minttyrc
        tmux.conf
        gitconfig
 	   gitignore
