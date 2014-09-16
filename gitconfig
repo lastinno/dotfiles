@@ -16,7 +16,7 @@ br = branch
 re = reset
 rb = rebase
 df = diff
-d = difftool
+dt = difftool
 log = log -p
 graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 
@@ -27,3 +27,9 @@ branch = auto
 interactive = auto
 grep = auto
 
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
