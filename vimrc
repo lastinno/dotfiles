@@ -302,6 +302,12 @@ endfor
 set splitright
 
 "---------------------------------------------------------------------------
+" git diff like highlighting of extra whitespaces
+let c_space_errors=1
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$\| \+\ze\t/
+
+"---------------------------------------------------------------------------
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
