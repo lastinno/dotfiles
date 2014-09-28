@@ -11,9 +11,12 @@ olddir=~/dotfiles_old             # old dotfiles backup directory
 
 # list of files/folders to symlink in homedir
 files="bashrc
-       bash_alias 
+       bash_aliases
        vimrc 
        gvimrc 
+       inputrc
+	   minttyrc
+       tmux.conf
        gitconfig
 	   gitignore
       " 
@@ -31,13 +34,17 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-		echo "Moving any existing dotfiles from ~ to $olddir"
-		mv ~/.$file ~/dotfiles_old/
-		echo "Creating symlink to $file in home directory."
-		ln -s $dir/$file ~/.$file
+for file in $files
+do
+  echo "Moving any existing dotfiles from ~ to $olddir"
+  mv ~/.$file ~/dotfiles_old/
+  echo "Creating symlink to $file in home directory."
+  ln -s $dir/$file ~/.$file
 done
 
-mkdir -p ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
+if [ ! -e ~/.vim/bundle/Vundle.vim ]
+then
+  mkdir -p ~/.vim/bundle
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+vim +PluginInstall +qall
