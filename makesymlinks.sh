@@ -15,10 +15,10 @@ files="bashrc
        vimrc 
        gvimrc 
        inputrc
-	   minttyrc
+       minttyrc
        tmux.conf
        gitconfig
-	   gitignore
+       gitignore
       " 
 
 ##########
