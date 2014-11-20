@@ -42,9 +42,16 @@ do
   ln -s $dir/$file ~/.$file
 done
 
+mkdir -p ~/.vim/bundle
 if [ ! -e ~/.vim/bundle/Vundle.vim ]
 then
-  mkdir -p ~/.vim/bundle
   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 vim +PluginInstall +qall
+
+mkdir -p ~/.tmux
+if [ ! -e ~/.tmux/tmux-powerline ]
+then
+  git clone https://github.com/erikw/tmux-powerline.git ~/.tmux/
+fi
+
