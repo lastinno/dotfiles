@@ -42,6 +42,7 @@ do
   ln -s $dir/$file ~/.$file
 done
 
+# install vim vundle
 mkdir -p ~/.vim/bundle
 if [ ! -e ~/.vim/bundle/Vundle.vim ]
 then
@@ -55,3 +56,4 @@ then
   git clone https://github.com/erikw/tmux-powerline.git ~/.tmux/
 fi
 
+source ~/.bashrc

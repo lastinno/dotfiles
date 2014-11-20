@@ -287,6 +287,14 @@ endif
 
 " Copyright (C) 2011 KaoriYa/MURAOKA Taro
 
+
+"---------------------------------------------------------------------------
+" vimdiffを見やすくするための色設定
+hi DiffAdd    ctermfg=black ctermbg=2
+hi DiffChange ctermfg=black ctermbg=3
+hi DiffDelete ctermfg=black ctermbg=6
+hi DiffText   ctermfg=black ctermbg=7
+
 "---------------------------------------------------------------------------
 " タブウィンドウの設定
 nnoremap <S-Tab> gt
