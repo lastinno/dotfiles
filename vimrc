@@ -289,6 +289,10 @@ endif
 
 
 "---------------------------------------------------------------------------
+" neocomplcacheの補完ポップアップの色調整
+hi Pmenu ctermbg=0
+
+"---------------------------------------------------------------------------
 " vimdiffを見やすくするための色設定
 hi DiffAdd    ctermfg=black ctermbg=2
 hi DiffChange ctermfg=black ctermbg=3
