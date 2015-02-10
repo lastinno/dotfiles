@@ -142,6 +142,7 @@ set tabstop=4
 ".htmlのタブ幅を2に変更
 au BufNewFile,BufRead *.html set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
+au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 expandtab
 au BufNewFile,BufRead *.c    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
@@ -369,6 +370,10 @@ Bundle 'mrtazz/simplenote.vim'
 if filereadable('~/.simplenoterc')
   source ~/.simplenoterc
 endif
+" unite
+Plugin 'Shougo/unite.vim'
+" syntastic
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -422,3 +427,22 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
+" unite settings
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
