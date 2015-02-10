@@ -141,7 +141,7 @@ set tabstop=4
 
 ".htmlのタブ幅を2に変更
 au BufNewFile,BufRead *.html set nowrap tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 au BufNewFile,BufRead *.c    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
@@ -187,6 +187,15 @@ set title
 colorscheme desert " (Windows用gvim使用時はgvimrcを編集すること)
 " 90文字目にラインを入れる
 "set colorcolumn=90
+"
+
+"---------------------------------------------------------------------------
+" vimdiffを見やすくする設定:
+hi DiffAdd    ctermfg=black ctermbg=2
+hi DiffChange ctermfg=black ctermbg=3
+hi DiffDelete ctermfg=black ctermbg=6
+hi DiffText   ctermfg=black ctermbg=7
+
 
 "---------------------------------------------------------------------------
 " ファイル操作に関する設定:
@@ -355,6 +364,11 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Plugin 'Valloric/YouCompleteMe'
 Bundle 'Shougo/neocomplcache'
+Bundle 'quickrun.vim'
+Bundle 'mrtazz/simplenote.vim'
+if filereadable('~/.simplenoterc')
+  source ~/.simplenoterc
+endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

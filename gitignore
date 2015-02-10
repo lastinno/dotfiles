@@ -1,1 +1,9 @@
 .idea/*
+git_slow_push
+unified/*
+ouengine/external/snappy/*
+server/src/make.sh
+gift/giftidcompensatelists
+gift/startup/data
+.cache
+.coverage

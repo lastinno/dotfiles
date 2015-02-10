@@ -5,7 +5,7 @@ alias lt='ls -lrt'
 alias ll='ls -l'
 alias h='history'
 alias cp='cp -i'
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
 alias rm='rm -i'
 alias vi='vim'
 
