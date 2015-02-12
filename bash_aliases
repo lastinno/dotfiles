@@ -14,9 +14,6 @@ alias finds='  /usr/bin/find . -type f -name "*.h" | xargs grep -n --color=alway
 alias findh='  /usr/bin/find . -type f -name "*.cpp" | xargs grep -n --color=always'
 alias ctagall='/usr/bin/find . -type f -name "*.cpp" | xargs ctags grep -n --color=always'
 
-# Windows
-alias open='explorer'
-
 # MySQL
 alias mysql='mysql --auto-rehash'
 
