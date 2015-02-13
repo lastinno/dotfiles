@@ -300,7 +300,9 @@ endif
 
 "---------------------------------------------------------------------------
 " neocomplcacheの補完ポップアップの色調整
-hi Pmenu ctermbg=0
+if has('mac')
+  hi Pmenu ctermbg=0
+endif
 
 "---------------------------------------------------------------------------
 " vimdiffを見やすくするための色設定
@@ -374,6 +376,10 @@ endif
 Plugin 'Shougo/unite.vim'
 " syntastic
 Plugin 'scrooloose/syntastic'
+" vimshell
+Plugin 'Shougo/vimshell.vim'
+" FSwitch
+Plugin 'derekwyatt/vim-fswitch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

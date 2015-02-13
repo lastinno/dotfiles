@@ -1,4 +1,5 @@
-.idea/*
+.idea
+.python-version
 git_slow_push
 unified/*
 ouengine/external/snappy/*
@@ -7,3 +8,4 @@ gift/giftidcompensatelists
 gift/startup/data
 .cache
 .coverage
+*.so
