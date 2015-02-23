@@ -6,6 +6,9 @@ excludesfile = ~/.gitignore
 name = Yukinari Tani
 email = yukinarit84@gmail.com
 
+[github]
+user = yukinarit
+
 [alias]
 commit = commit -v
 st = status
