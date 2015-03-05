@@ -299,12 +299,15 @@ endif
 
 
 "---------------------------------------------------------------------------
+<<<<<<< HEAD
 " neocomplcacheの補完ポップアップの色調整
 if has('mac')
   hi Pmenu ctermbg=0
 endif
 
 "---------------------------------------------------------------------------
+=======
+>>>>>>> disable neocompletecache for the time being
 " vimdiffを見やすくするための色設定
 hi DiffAdd    ctermfg=black ctermbg=2
 hi DiffChange ctermfg=black ctermbg=3
@@ -366,12 +369,10 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Plugin 'Valloric/YouCompleteMe'
-Bundle 'Shougo/neocomplcache'
+" Bundle 'Shougo/neocomplcache'
 Bundle 'quickrun.vim'
+" simplenote
 Bundle 'mrtazz/simplenote.vim'
-if filereadable('~/.simplenoterc')
-  source ~/.simplenoterc
-endif
 " unite
 Plugin 'Shougo/unite.vim'
 " syntastic
@@ -384,6 +385,8 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 " gift-vim
 Plugin 'mattn/gist-vim'
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -401,41 +404,44 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+"let g:acp_enableAtStartup = 0
 " Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_smart_case = 1
 " Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 0
+"let g:neocomplcache_enable_camel_case_completion = 0
 " Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+"let g:neocomplcache_min_syntax_length = 3
+"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : ''
-    \ }
+"let g:neocomplcache_dictionary_filetype_lists = {
+"    \ 'default' : ''
+"    \ }
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+"inoremap <expr><C-g>     neocomplcache#undo_completion()
+"inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"    return neocomplcache#smart_close_popup() . "\<CR>"
+"endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplcache#close_popup()
+"inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" neocomplcacheの補完ポップアップの色調整
+"hi Pmenu ctermbg=0
 
 " unite settings
 let g:unite_enable_start_insert=1
@@ -458,3 +464,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_cpp_checkers = ['']
+"
+" simplenote setting
+let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
+let g:SimplenotePassword = $SIMPLENOTEPASSWORD

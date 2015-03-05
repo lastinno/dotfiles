@@ -117,7 +117,7 @@ fi
 
 # User specific environment and startup programs
 ENV=$HOME/.bashrc
-PATH="$PATH:$HOME/bin:$HOME/usr/bin:/usr/local/bin"
+PATH="$HOME/bin:$PATH:$HOME/usr/bin:/usr/local/bin"
 
 # record time of command history
 export HISTTIMEFORMAT='%Y-%m-%d %T '
