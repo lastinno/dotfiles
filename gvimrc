@@ -1,34 +1,8 @@
-" vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
 "
-" An example for a Japanese version gvimrc file.
-" 日本語版のデフォルトGUI設定ファイル(gvimrc) - Vim7用試作
+" gvimrc
+" 
 "
-" Last Change: 14-Dec-2013.
-" Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
-"
-" 解説:
-" このファイルにはVimの起動時に必ず設定される、GUI関連の設定が書かれていま
-" す。編集時の挙動に関する設定はvimrcに書かかれています。
-"
-" 個人用設定は_gvimrcというファイルを作成しそこで行ないます。_gvimrcはこの
-" ファイルの後に読込まれるため、ここに書かれた内容を上書きして設定することが
-" 出来ます。_gvimrcは$HOMEまたは$VIMに置いておく必要があります。$HOMEは$VIM
-" よりも優先され、$HOMEでみつかった場合$VIMは読込まれません。
-"
-" 管理者向けに本設定ファイルを直接書き換えずに済ませることを目的として、サイ
-" トローカルな設定を別ファイルで行なえるように配慮してあります。Vim起動時に
-" サイトローカルな設定ファイル($VIM/gvimrc_local.vim)が存在するならば、本設
-" 定ファイルの主要部分が読み込まれる前に自動的に読み込みます。
-"
-" 読み込み後、変数g:gvimrc_local_finishが非0の値に設定されていた場合には本設
-" 定ファイルに書かれた内容は一切実行されません。デフォルト動作を全て差し替え
-" たい場合に利用して下さい。
-"
-" 参考:
-"   :help gvimrc
-"   :echo $HOME
-"   :echo $VIM
-"   :version
+
 
 "---------------------------------------------------------------------------
 " サイトローカルな設定($VIM/gvimrc_local.vim)があれば読み込む。読み込んだ後
@@ -210,4 +184,3 @@ if has('printer')
   endif
 endif
 
-" Copyright (C) 2011 KaoriYa/MURAOKA Taro
