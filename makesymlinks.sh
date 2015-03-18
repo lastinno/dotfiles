@@ -51,9 +51,5 @@ fi
 vim +PluginInstall +qall
 
 mkdir -p ~/.tmux
-if [ ! -e ~/.tmux/tmux-powerline ]
-then
-  git clone https://github.com/erikw/tmux-powerline.git ~/.tmux/
-fi
 
 source ~/.bashrc
