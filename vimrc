@@ -359,5 +359,4 @@ let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
 let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 
 " YouCompleteMe
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"let g:ycm_server_keep_logfiles = '~/.vimtmp/ymcd.log'
+let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
