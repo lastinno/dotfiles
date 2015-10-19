@@ -15,6 +15,7 @@ st = status
 sh = stash
 co = checkout
 ci = commit
+cp = cherry-pick
 br = branch
 re = reset
 rb = rebase

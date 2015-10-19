@@ -270,6 +270,9 @@ hi DiffChange ctermfg=black ctermbg=3
 hi DiffDelete ctermfg=black ctermbg=6
 hi DiffText   ctermfg=black ctermbg=7
 
+" enable editing in vimdiff
+set noro
+
 "---------------------------------------------------------------------------
 " tab window settings
 nnoremap <S-Tab> gt
@@ -323,6 +326,8 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'Valloric/YouCompleteMe'
+"Plugin 'itchyny/lightline.vim'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -348,11 +353,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_mode_map = {
+        \ "mode": "passive",
+        \ "active_filetypes": [],
+        \ "passive_filetypes": [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_checkers = ['']
+let g:syntastic_python_pylint_args = "--disable=C0111"
 
 " simplenote
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
