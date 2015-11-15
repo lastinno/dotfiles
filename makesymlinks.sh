@@ -50,6 +50,7 @@ then
 fi
 vim +PluginInstall +qall
 
+mkdir -p ~/.vimtmp
 mkdir -p ~/.tmux
 
-source ~/.bashrc
+. ~/.bashrc
