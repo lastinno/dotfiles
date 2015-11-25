@@ -19,6 +19,7 @@ files="bashrc
        tmux.conf
        gitconfig
        gitignore
+       tigrc
       "
 
 ##########
