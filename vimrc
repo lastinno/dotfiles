@@ -116,10 +116,10 @@ set tabstop=4
 " language specific tab and space settings
 au BufNewFile,BufRead *.html set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
-au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 expandtab
 au BufNewFile,BufRead *.c    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.js   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
@@ -321,13 +321,17 @@ Plugin 'quickrun.vim'
 Plugin 'mrtazz/simplenote.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimshell.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'Valloric/YouCompleteMe'
+<<<<<<< HEAD
 "Plugin 'itchyny/lightline.vim'
 Plugin 'mileszs/ack.vim'
+=======
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/syntastic'
+>>>>>>> change YouCompleteMe options
 
 call vundle#end()
 filetype plugin indent on
@@ -363,6 +367,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_checkers = ['']
 let g:syntastic_python_pylint_args = "--disable=C0111"
+let g:syntastic_python_pylint_args = "--disable=C0001"
 
 " simplenote
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
@@ -370,5 +375,13 @@ let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 
 " YouCompleteMe
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_server_keep_logfiles = 1
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"let g:ycm_server_keep_logfiles = 1
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_server_use_vim_stdout = 1
+"let g:ycm_server_log_level = 'debug'
+let g:ycm_autoclose_preview_window_after_completion=1
+
+syntax enable
+set background=light
+colorscheme solarized
