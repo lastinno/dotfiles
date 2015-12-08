@@ -14,6 +14,7 @@ commit = commit -v
 st = status
 sh = stash
 co = checkout
+addu = add -u
 ci = commit
 cp = cherry-pick
 br = branch
