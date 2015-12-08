@@ -325,13 +325,8 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'Valloric/YouCompleteMe'
-<<<<<<< HEAD
-"Plugin 'itchyny/lightline.vim'
 Plugin 'mileszs/ack.vim'
-=======
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
->>>>>>> change YouCompleteMe options
 
 call vundle#end()
 filetype plugin indent on
@@ -381,7 +376,3 @@ let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 "let g:ycm_server_use_vim_stdout = 1
 "let g:ycm_server_log_level = 'debug'
 let g:ycm_autoclose_preview_window_after_completion=1
-
-syntax enable
-set background=light
-colorscheme solarized
