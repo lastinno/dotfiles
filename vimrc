@@ -280,6 +280,8 @@ nnoremap <Tab><Tab> gT
 for i in range(1, 9)
     execute 'nnoremap <Tab>' . i . ' ' . i . 'gt'
 endfor
+nnoremap <C-Insert> :tabnew<CR>
+nnoremap <C-Delete> :tabclose<CR>
 
 "---------------------------------------------------------------------------
 " split window settings
@@ -376,3 +378,5 @@ let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 "let g:ycm_server_use_vim_stdout = 1
 "let g:ycm_server_log_level = 'debug'
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_enable_diagnostic_highlighting = 0
