@@ -1,6 +1,7 @@
 "
-" vimrc
-" 
+" ＿人人人人人＿
+" ＞  vimrc   ＜
+" ￣ＹＹＹＹＹ
 "
 
 
@@ -74,6 +75,10 @@ set fileencodings=utf8,iso-2022-jp,euc-jp,cp932,sjis
 if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
   set termencoding=cp932
 endif
+
+"---------------------------------------------------------------------------
+" Leader
+let mapleader = "\<Space>"
 
 "---------------------------------------------------------------------------
 " メニューファイルが存在しない場合は予め'guioptions'を調整しておく
@@ -380,3 +385,11 @@ let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_enable_diagnostic_highlighting = 0
+
+" fswitch
+" Switch to the file and load it into the current window
+nnoremap <silent> <Leader>s :FSHere<CR>
+" Switch to the file and load it into the window on the right
+nnoremap <silent> <Leader>sr :FSRight<CR>
+" Switch to the file and load it into a new window split on the right
+nnoremap <silent> <Leader>sR :FSSplitRight<SR>
