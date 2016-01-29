@@ -229,9 +229,6 @@ if has('mac')
   " Macではデフォルトの'iskeyword'がcp932に対応しきれていないので修正
   set iskeyword=@,48-57,_,128-167,224-235
 endif
-"
-"---------------------------------------------------------------------------
-" vimrcをdropboxで共有するための設定
 
 " WindowsがSJISでvimrcを読み込むための設定
 highlight zenkakuda cterm=underline ctermfg=black guibg=black
@@ -331,8 +328,10 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'itchyny/lightline.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 
 call vundle#end()
@@ -378,10 +377,9 @@ let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 " YouCompleteMe
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-"let g:ycm_server_keep_logfiles = 1
-"let g:ycm_confirm_extra_conf = 0
-"let g:ycm_server_use_vim_stdout = 1
-"let g:ycm_server_log_level = 'debug'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_server_use_vim_stdout = 1
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_enable_diagnostic_highlighting = 0
