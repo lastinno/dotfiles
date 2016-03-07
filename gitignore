@@ -10,3 +10,4 @@ gift/startup/data
 .coverage
 *.so
 .ycm_extra_conf.py
+tags

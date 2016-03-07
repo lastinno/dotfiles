@@ -16,6 +16,10 @@ shopt -s histappend
 HISTSIZE=10000
 HISTFILESIZE=20000
 
+# flush bash_history after each command, so that bash hisotory is shared
+# among multiple session/terminal environment
+export PROMPT_COMMAND='history -a'
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize

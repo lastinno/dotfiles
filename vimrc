@@ -111,6 +111,9 @@ endif
 set ignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
 set smartcase
+" case insensitive file name completion
+set wildignorecase
+set wildmode=list,full
 
 "---------------------------------------------------------------------------
 " 編集に関する設定:
@@ -333,6 +336,11 @@ Plugin 'mattn/gist-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
+Plugin 'szw/vim-tags'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'AnsiEsc.vim'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -391,3 +399,13 @@ nnoremap <silent> <Leader>s :FSHere<CR>
 nnoremap <silent> <Leader>sr :FSRight<CR>
 " Switch to the file and load it into a new window split on the right
 nnoremap <silent> <Leader>sR :FSSplitRight<SR>
+
+" vim-tags
+let g:vim_tags_use_language_field = 1
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+" NERDTree
+nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
+
+" vim-airline
+let g:airline#extensions#tabline#left_alt_sep = '|'
