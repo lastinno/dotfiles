@@ -122,12 +122,13 @@ set wildmode=list,full
 set tabstop=4
 
 " language specific tab and space settings
-au BufNewFile,BufRead *.html set nowrap tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.html set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 au BufNewFile,BufRead *.c    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *.js   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
+au BufNewFile,BufRead *.js   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
+au BufNewFile,BufRead *.ts   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
