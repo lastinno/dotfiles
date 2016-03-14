@@ -58,7 +58,7 @@ fi
 #----------------
 if [ -f ~/.git-prompt.sh ]; then
 	source ~/.git-prompt.sh
-	export PS1="\u@\h"'$(__git_ps1 "(%s)")'":\$PWD\$ "
+	export PS1="\u@\h"'$(__git_ps1 "(%s)")'':$(echo $PWD | sed "s|${HOME}|~|")\$ '
 	#export PS1='$(__git_ps1)'
 else
 	export PS1="\u@\h:\W\\$\[$(tput sgr0)\] "
