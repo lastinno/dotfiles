@@ -20,6 +20,7 @@ files="bashrc
        gitconfig
        gitignore
        tigrc
+	   git-prompt.sh
       "
 
 ##########
