@@ -172,6 +172,37 @@ colorscheme desert " (Windows用gvim使用時はgvimrcを編集すること)
 "
 
 "---------------------------------------------------------------------------
+" Tabline
+"
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+set showtabline=2 " Always display tabline
+
+
+"---------------------------------------------------------------------------
 " files
 "
 
@@ -331,7 +362,7 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'itchyny/lightline.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -340,7 +371,6 @@ Plugin 'szw/vim-tags'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'AnsiEsc.vim'
-Plugin 'vim-airline/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -406,6 +436,3 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " NERDTree
 nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
-
-" vim-airline
-let g:airline#extensions#tabline#left_alt_sep = '|'
