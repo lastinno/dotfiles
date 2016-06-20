@@ -36,9 +36,11 @@ interactive = auto
 grep = auto
 
 [diff]
-	tool = vimdiff
+tool = vimdiff
+
 [difftool]
-	prompt = false
+prompt = false
+
 [merge]
 	tool = vimdiff
 [http]
