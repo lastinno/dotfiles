@@ -41,3 +41,5 @@ grep = auto
 	prompt = false
 [merge]
 	tool = vimdiff
+[http]
+	postBuffer = 524288000
