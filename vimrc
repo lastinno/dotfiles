@@ -415,19 +415,28 @@ let g:syntastic_python_pylint_args = "--disable=C0001"
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
 let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 
+"
 " YouCompleteMe
+"
 if has('unix')
-let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_enable_diagnostic_highlighting = 0
-endif
+  " for C++
+  let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+  let g:ycm_server_keep_logfiles = 1
+  let g:ycm_server_log_level = 'debug'
+  let g:ycm_server_use_vim_stdout = 1
+  let g:ycm_autoclose_preview_window_after_completion=1
+  let g:ycm_collect_identifiers_from_tags_files = 1
 
-let g:ycm_python_binary_path = 'python'
+  let g:ycm_enable_diagnostic_signs = 1
+  let g:ycm_enable_diagnostic_highlighting = 0
+
+  let g:ycm_always_populate_location_list = 1
+  let g:ycm_open_loclist_on_ycm_diags = 1
+
+  " for python
+  let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
+  let g:ycm_python_binary_path = 'python'
+endif
 
 " fswitch
 " Switch to the file and load it into the current window
