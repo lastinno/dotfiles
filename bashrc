@@ -125,3 +125,18 @@ if [ -d "${PYENV_ROOT}" ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+#----------------
+# ssh
+#----------------
+# Make sure ssh-agent dies on logout
+trap '
+  test -n "${SSH_AGENT_PID}" && eval `ssh-agent -k`;
+  test -n "${SSH2_AGENT_PID}" && kill ${SSH2_AGENT_PID}
+' 0
+
+# If no agent is running and we have a terminal, run ssh-agent and ssh-add
+if [ "${SSH_AUTH_SOCK}" = "" ]
+then
+  eval `ssh-agent`
+  /usr/bin/tty > /dev/null && ssh-add
+fi
