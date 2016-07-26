@@ -42,6 +42,6 @@ tool = vimdiff
 prompt = false
 
 [merge]
-	tool = vimdiff
+tool = vimdiff
 [http]
-	postBuffer = 524288000
+postBuffer = 524288000
