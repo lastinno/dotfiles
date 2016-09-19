@@ -375,6 +375,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'AnsiEsc.vim'
 Plugin 'soramugi/auto-ctags.vim'
+Plugin 'hdima/python-syntax'
 
 call vundle#end()
 filetype plugin indent on
@@ -458,3 +459,6 @@ nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
 
 " auto-ctags
 let g:auto_ctags = 1
+
+" python-syntax
+let python_highlight_all = 1
