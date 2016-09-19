@@ -331,6 +331,14 @@ highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/
 
 "---------------------------------------------------------------------------
+" Highlight 80 column line
+if exists('+colorcolumn')
+	set colorcolumn=80
+else
+	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
+"---------------------------------------------------------------------------
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
