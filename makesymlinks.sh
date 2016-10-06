@@ -21,6 +21,7 @@ files="bashrc
        gitignore
        tigrc
 	   git-prompt.sh
+	   ctags
       "
 
 ##########
