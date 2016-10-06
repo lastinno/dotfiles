@@ -374,6 +374,7 @@ Plugin 'szw/vim-tags'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'AnsiEsc.vim'
+Plugin 'soramugi/auto-ctags.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -419,7 +420,6 @@ let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 " YouCompleteMe
 "
 if has('unix')
-<<<<<<< dd679e24873a894d283a094a38c544e751637fdc
   " for C++
   let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
   let g:ycm_server_keep_logfiles = 1
@@ -437,16 +437,6 @@ if has('unix')
   " for python
   let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
   let g:ycm_python_binary_path = 'python'
-=======
-let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_enable_diagnostic_highlighting = 0
->>>>>>> Fix some settings
 endif
 
 " fswitch
@@ -463,3 +453,6 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " NERDTree
 nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
+
+" auto-ctags
+let g:auto_ctags = 1
