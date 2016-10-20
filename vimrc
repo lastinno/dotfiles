@@ -446,6 +446,8 @@ nnoremap <silent> <Leader>s :FSHere<CR>
 nnoremap <silent> <Leader>sr :FSRight<CR>
 " Switch to the file and load it into a new window split on the right
 nnoremap <silent> <Leader>sR :FSSplitRight<SR>
+" Opening tags in new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " vim-tags
 let g:vim_tags_use_language_field = 1
