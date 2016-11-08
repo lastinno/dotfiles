@@ -140,3 +140,11 @@ then
   eval `ssh-agent`
   /usr/bin/tty > /dev/null && ssh-add
 fi
+
+#----------------
+# Haskell
+#----------------
+export GHC_DOT_APP="/Applications/ghc-7.10.3.app"
+if [ -d "$GHC_DOT_APP" ]; then
+	export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
