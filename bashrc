@@ -113,6 +113,10 @@ PATH="$HOME/bin:$PATH:$HOME/usr/bin:/usr/local/bin"
 # record time of command history
 export HISTTIMEFORMAT='%Y-%m-%d %T '
 
+# CTRL-w deletes back to the last path
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
 #----------------
 # python
 #----------------
