@@ -458,7 +458,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
 
 " auto-ctags
-let g:auto_ctags = 1
+let g:auto_ctags = 0
 
 " python-syntax
 let python_highlight_all = 1
