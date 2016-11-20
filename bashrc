@@ -143,6 +143,8 @@ if [ "${SSH_AUTH_SOCK}" = "" ]
 then
   eval `ssh-agent`
   /usr/bin/tty > /dev/null && ssh-add
+else
+  ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
 
 #----------------
