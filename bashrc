@@ -130,6 +130,11 @@ if [ -d "${PYENV_ROOT}" ]; then
 fi
 
 #----------------
+# js
+#----------------
+export PATH=~/.npm-global/bin:$PATH
+
+#----------------
 # ssh
 #----------------
 # Make sure ssh-agent dies on logout
