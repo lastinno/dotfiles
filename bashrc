@@ -133,10 +133,10 @@ fi
 # ssh
 #----------------
 # Make sure ssh-agent dies on logout
-trap '
-  test -n "${SSH_AGENT_PID}" && eval `ssh-agent -k`;
-  test -n "${SSH2_AGENT_PID}" && kill ${SSH2_AGENT_PID}
-' 0
+#trap '
+#  test -n "${SSH_AGENT_PID}" && eval `ssh-agent -k`;
+#  test -n "${SSH2_AGENT_PID}" && kill ${SSH2_AGENT_PID}
+#' 0
 
 function _ssh_auth_save
 {
