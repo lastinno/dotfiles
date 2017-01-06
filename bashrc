@@ -138,13 +138,25 @@ trap '
   test -n "${SSH2_AGENT_PID}" && kill ${SSH2_AGENT_PID}
 ' 0
 
+function _ssh_auth_save
+{
+  export HOSTNAME=`hostname`
+  _sock=~/.ssh/ssh_auth_sock.$HOSTNAME
+  if [ ! -e "${_sock}" ]
+  then
+    ln -sf ${SSH_AUTH_SOCK} ${_sock}
+    export SSH_AUTH_SOCK=${_sock}
+  fi
+}
+alias tmux="_ssh_auth_save; tmux"
+
 # If no agent is running and we have a terminal, run ssh-agent and ssh-add
 if [ "${SSH_AUTH_SOCK}" = "" ]
 then
   eval `ssh-agent`
   /usr/bin/tty > /dev/null && ssh-add
 else
-  ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+  _ssh_auth_save
 fi
 
 #----------------
