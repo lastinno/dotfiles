@@ -208,18 +208,20 @@ set showtabline=2 " Always display tabline
 " files
 "
 
-" file backups
+" file backups and undo files
 if has('win32')
   set backupdir=$HOME/vimtmp
   set directory=$HOME/vimtmp
+  set undodir=$HOME/vimtmp
+
 else
   set backupdir=$HOME/.vimtmp
   set directory=$HOME/.vimtmp
+  set undodir=$HOME/.vimtmp
 endif
 
 " swap files
 set noswapfile
-
 
 "---------------------------------------------------------------------------
 " ファイル名に大文字小文字の区別がないシステム用の設定:
