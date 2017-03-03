@@ -399,13 +399,10 @@ filetype plugin indent on
 
 " unite
 let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+noremap <C-P> :Unite buffer<CR>
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" List of recently opened files
+noremap <C-Z> :Unite file_mru<CR>
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -421,9 +418,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_checkers = ['']
-let g:syntastic_python_pylint_args = "--disable=C0111"
-let g:syntastic_python_pylint_args = "--disable=C0001"
-
+let g:syntastic_python_pylint_args = "--disable=C0111" "let g:syntastic_python_pylint_args = "--disable=C0001"
 " simplenote
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
 let g:SimplenotePassword = $SIMPLENOTEPASSWORD
@@ -446,9 +441,16 @@ if has('unix')
   let g:ycm_always_populate_location_list = 1
   let g:ycm_open_loclist_on_ycm_diags = 1
 
+  " Override ctags keymap with YCM based commands
+  map <C-]> :YcmComplete GoTo<CR>
+  map <C-T> <C-O>
+  " Opening tags in new tab
+  map <C-\> :tab split<CR>:YcmComplete GoTo<CR>
+
   " for python
   let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
   let g:ycm_python_binary_path = 'python'
+
 endif
 
 " fswitch
@@ -458,8 +460,6 @@ nnoremap <silent> <Leader>s :FSHere<CR>
 nnoremap <silent> <Leader>sr :FSRight<CR>
 " Switch to the file and load it into a new window split on the right
 nnoremap <silent> <Leader>sR :FSSplitRight<SR>
-" Opening tags in new tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " vim-tags
 let g:vim_tags_use_language_field = 1
@@ -467,9 +467,6 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " NERDTree
 nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
-
-" auto-ctags
-let g:auto_ctags = 0
 
 " python-syntax
 let python_highlight_all = 1
