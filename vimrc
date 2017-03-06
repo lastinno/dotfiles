@@ -443,6 +443,12 @@ let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_always_populate_location_list = 1
 let g:ycm_open_loclist_on_ycm_diags = 1
 
+" Override ctags keymap with YCM based commands
+map <C-]> :YcmComplete GoTo<CR>
+map <C-T> <C-O>
+" Opening tags in new tab
+map <C-\> :tab split<CR>:YcmComplete GoTo<CR>
+
 " for Python
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 let g:ycm_python_binary_path = 'python'
