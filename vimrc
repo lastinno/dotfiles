@@ -130,6 +130,8 @@ au BufNewFile,BufRead *.cs   set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.js   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.ts   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
+au BufRead,BufNewFile *.rs   set nowrap tabstop=4 shiftwidth=4
+au BufRead,BufNewFile *.rs   set filetype=rust
 
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
@@ -374,9 +376,7 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-if has('unix')
-  Plugin 'Valloric/YouCompleteMe'
-endif
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'itchyny/lightline.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -387,6 +387,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'AnsiEsc.vim'
 Plugin 'soramugi/auto-ctags.vim'
 Plugin 'hdima/python-syntax'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -419,6 +420,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_checkers = ['']
 let g:syntastic_python_pylint_args = "--disable=C0111" "let g:syntastic_python_pylint_args = "--disable=C0001"
+
 " simplenote
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
 let g:SimplenotePassword = $SIMPLENOTEPASSWORD
@@ -426,32 +428,26 @@ let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 "
 " YouCompleteMe
 "
-if has('unix')
-  " for C++
-  let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-  let g:ycm_server_keep_logfiles = 1
-  let g:ycm_server_log_level = 'debug'
-  let g:ycm_server_use_vim_stdout = 1
-  let g:ycm_autoclose_preview_window_after_completion=1
-  let g:ycm_collect_identifiers_from_tags_files = 1
+" for C++
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_collect_identifiers_from_tags_files = 1
 
-  let g:ycm_enable_diagnostic_signs = 1
-  let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 0
 
-  let g:ycm_always_populate_location_list = 1
-  let g:ycm_open_loclist_on_ycm_diags = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_open_loclist_on_ycm_diags = 1
 
-  " Override ctags keymap with YCM based commands
-  map <C-]> :YcmComplete GoTo<CR>
-  map <C-T> <C-O>
-  " Opening tags in new tab
-  map <C-\> :tab split<CR>:YcmComplete GoTo<CR>
+" for python
+let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
+let g:ycm_python_binary_path = 'python'
 
-  " for python
-  let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
-  let g:ycm_python_binary_path = 'python'
-
-endif
+" for rust
+let g:ycm_rust_src_path = '/usr/local/rust/rust-1.15.1/src'
 
 " fswitch
 " Switch to the file and load it into the current window
