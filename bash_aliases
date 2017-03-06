@@ -19,3 +19,5 @@ alias ctags='ctags --fields=+l'
 # MySQL
 alias mysql='mysql --auto-rehash'
 
+alias cmake='cmake3'
+

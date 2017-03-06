@@ -428,6 +428,7 @@ let g:SimplenotePassword = $SIMPLENOTEPASSWORD
 "
 " YouCompleteMe
 "
+
 " for C++
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 let g:ycm_server_keep_logfiles = 1
@@ -442,12 +443,12 @@ let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_always_populate_location_list = 1
 let g:ycm_open_loclist_on_ycm_diags = 1
 
-" for python
+" for Python
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
 let g:ycm_python_binary_path = 'python'
 
-" for rust
-let g:ycm_rust_src_path = '/usr/local/rust/rust-1.15.1/src'
+" for Rust
+let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
 
 " fswitch
 " Switch to the file and load it into the current window

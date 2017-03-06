@@ -173,4 +173,4 @@ fi
 #----------------
 # Rust
 #----------------
-export PATH=$PATH:/Users/yukinari/.cargo/bin
+source $HOME/.cargo/env
