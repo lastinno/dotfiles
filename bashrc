@@ -14,9 +14,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
-HISTFILESIZE=20000
-
-# flush bash_history after each command, so that bash hisotory is shared
+HISTFILESIZE=20000 # flush bash_history after each command, so that bash hisotory is shared
 # among multiple session/terminal environment
 export PROMPT_COMMAND='history -a'
 
@@ -156,7 +154,7 @@ function _ssh_auth_save
 alias tmux="_ssh_auth_save; tmux"
 
 # If no agent is running and we have a terminal, run ssh-agent and ssh-add
-if [ "${SSH_AUTH_SOCK}" = "" ]
+if [ "${SSH_AUTH_SOCK}" == "" ]
 then
   eval `ssh-agent`
   /usr/bin/tty > /dev/null && ssh-add
