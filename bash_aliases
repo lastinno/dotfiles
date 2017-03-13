@@ -16,8 +16,7 @@ alias ctagall='/usr/bin/find . -type f -name "*.cpp" | xargs ctags grep -n --col
 
 alias ctags='ctags --fields=+l'
 
+alias top='top -oRES'
+
 # MySQL
 alias mysql='mysql --auto-rehash'
-
-alias cmake='cmake3'
-
