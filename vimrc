@@ -122,12 +122,14 @@ set wildmode=list,full
 set tabstop=4
 
 " language specific tab and space settings
+au BufNewFile,BufRead *.sh   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.html set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.py   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 au BufNewFile,BufRead *.c    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.cs   set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.hpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.js   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.ts   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufRead,BufNewFile *.rs   set nowrap tabstop=4 shiftwidth=4
@@ -368,10 +370,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 Plugin 'quickrun.vim'
 Plugin 'mrtazz/simplenote.vim'
-Plugin 'Shougo/unite.vim'
+"Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
@@ -399,25 +401,27 @@ filetype plugin indent on
 "
 
 " unite
-let g:unite_enable_start_insert=1
-noremap <C-P> :Unite buffer<CR>
-noremap <C-N> :Unite -buffer-name=file file<CR>
+"let g:unite_enable_start_insert=1
+"noremap <C-P> :Unite buffer<CR>
+"noremap <C-N> :Unite -buffer-name=file file<CR>
+"" List of recently opened files
+"noremap <C-Z> :Unite file_mru<CR>
 
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_mode_map = {
-        \ "mode": "passive",
-        \ "active_filetypes": [],
-        \ "passive_filetypes": [] }
+"let g:syntastic_mode_map = {
+"        \ "mode": "passive",
+"        \ "active_filetypes": [],
+"        \ "passive_filetypes": [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_checkers = ['']
-let g:syntastic_python_pylint_args = "--disable=C0111" "let g:syntastic_python_pylint_args = "--disable=C0001"
+"let g:syntastic_cpp_checkers = ['']
+"let g:syntastic_python_pylint_args = "--disable=C0111" "let g:syntastic_python_pylint_args = "--disable=C0001"
 
 " simplenote
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
@@ -461,6 +465,15 @@ nnoremap <silent> <Leader>s :FSHere<CR>
 nnoremap <silent> <Leader>sr :FSRight<CR>
 " Switch to the file and load it into a new window split on the right
 nnoremap <silent> <Leader>sR :FSSplitRight<SR>
+
+let g:fsnonewfiles = 'on'
+augroup myfswitch
+  au!
+  au BufEnter *.h let b:fswitchdst    = 'cpp,cc,c'
+  au BufEnter *.h let b:fswitchlocs   = 'src,../src,reg:/include/src/,reg:/include.*/src/'
+  au BufEnter *.cpp let b:fswitchdst  = 'h,hpp'
+  au BufEnter *.cpp let b:fswitchlocs = 'include,../include,./,reg:/src/include/,reg:/src.*/include/,reg:|src|include/**|'
+augroup END
 
 " vim-tags
 let g:vim_tags_use_language_field = 1
