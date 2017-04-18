@@ -379,7 +379,6 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'itchyny/lightline.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
@@ -390,6 +389,8 @@ Plugin 'AnsiEsc.vim'
 Plugin 'soramugi/auto-ctags.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'rust-lang/rust.vim'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'nvie/vim-flake8'
 
 call vundle#end()
 filetype plugin indent on
@@ -452,8 +453,8 @@ map <C-T> <C-O>
 map <C-\> :tab split<CR>:YcmComplete GoTo<CR>
 
 " for Python
-let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python'
-let g:ycm_python_binary_path = 'python'
+let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python3'
+let g:ycm_python_binary_path = 'python3'
 
 " for Rust
 let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
@@ -484,3 +485,6 @@ nnoremap <silent><C-e> :NERDTreeTabsToggle<CR>
 
 " python-syntax
 let python_highlight_all = 1
+
+" vim-clang-format
+autocmd FileType c,cpp ClangFormatAutoEnable
