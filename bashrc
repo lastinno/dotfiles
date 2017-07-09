@@ -154,7 +154,7 @@ function _ssh_auth_save
 alias tmux="_ssh_auth_save; tmux"
 
 # If no agent is running and we have a terminal, run ssh-agent and ssh-add
-if [ "${SSH_AUTH_SOCK}" == "" ]
+if [ "${SSH_AUTH_SOCK}" == "" ] || [ ! -e "${SSH_AUTH_SOCK}" ]
 then
   eval `ssh-agent`
   /usr/bin/tty > /dev/null && ssh-add
