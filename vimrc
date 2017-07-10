@@ -132,8 +132,10 @@ au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.hpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.js   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.ts   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
+au BufRead,BufNewFile *.ts   set filetype=typescript
 au BufRead,BufNewFile *.rs   set nowrap tabstop=4 shiftwidth=4
 au BufRead,BufNewFile *.rs   set filetype=rust
+au BufNewFile,BufRead *.yml  set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
@@ -171,11 +173,6 @@ set cmdheight=2
 set showcmd
 " タイトルを表示
 set title
-" 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
-colorscheme desert " (Windows用gvim使用時はgvimrcを編集すること)
-" 90文字目にラインを入れる
-"set colorcolumn=90
-"
 
 "---------------------------------------------------------------------------
 " Tabline
@@ -207,6 +204,17 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2 " Always display tabline
 
+
+"---------------------------------------------------------------------------
+" Highlight
+"
+highlight Comment cterm=bold
+highlight Constant cterm=bold
+highlight Identifier cterm=bold
+highlight Statement cterm=bold
+highlight PreProc cterm=bold
+highlight Type cterm=bold
+highlight Special cterm=bold
 
 "---------------------------------------------------------------------------
 " files
@@ -339,11 +347,11 @@ match RedundantSpaces /\s\+$\| \+\ze\t/
 
 "---------------------------------------------------------------------------
 " Highlight 80 column line
-if exists('+colorcolumn')
-	set colorcolumn=80
-else
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+"if exists('+colorcolumn')
+"	set colorcolumn=80
+"else
+"	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"endif
 
 "---------------------------------------------------------------------------
 " Python
