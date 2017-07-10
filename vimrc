@@ -399,6 +399,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'rust-lang/rust.vim'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 filetype plugin indent on
