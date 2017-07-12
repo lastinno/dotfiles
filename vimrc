@@ -131,7 +131,7 @@ au BufNewFile,BufRead *.cs   set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.h    set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.hpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.js   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
-au BufNewFile,BufRead *.ts   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
+au BufNewFile,BufRead *.ts   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 au BufRead,BufNewFile *.ts   set filetype=typescript
 au BufRead,BufNewFile *.rs   set nowrap tabstop=4 shiftwidth=4
 au BufRead,BufNewFile *.rs   set filetype=rust
@@ -422,10 +422,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-"let g:syntastic_mode_map = {
-"        \ "mode": "passive",
-"        \ "active_filetypes": [],
-"        \ "passive_filetypes": [] }
+let g:syntastic_mode_map = {
+        \ "mode": "passive",
+        \ "active_filetypes": ["python", "rust", "typescript"],
+        \ "passive_filetypes": ["sh"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
