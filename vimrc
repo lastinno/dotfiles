@@ -156,7 +156,7 @@ set formatoptions+=mM
 " GUI固有ではない画面表示の設定:
 "
 " 行番号を非表示 (number:表示)
-set number
+set nonumber
 " ルーラーを表示 (noruler:非表示)
 set ruler
 " タブや改行を表示 (list:表示)
