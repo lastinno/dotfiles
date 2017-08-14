@@ -22,6 +22,7 @@ files="bashrc
        tigrc
        git-prompt.sh
        ctags
+       flake8
       "
 
 ##########
