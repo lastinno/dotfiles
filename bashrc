@@ -141,17 +141,22 @@ export PATH=~/.npm-global/bin:$PATH
 #  test -n "${SSH2_AGENT_PID}" && kill ${SSH2_AGENT_PID}
 #' 0
 
+export HOSTNAME=`hostname`
+
 function _ssh_auth_save
 {
-  export HOSTNAME=`hostname`
   _sock=~/.ssh/ssh_auth_sock.$HOSTNAME
   if [ ! -e "${_sock}" ]
   then
     ln -sf ${SSH_AUTH_SOCK} ${_sock}
-    export SSH_AUTH_SOCK=${_sock}
   fi
+  export SSH_AUTH_SOCK=${_sock}
 }
 alias tmux="_ssh_auth_save; tmux"
+
+# Sometimes, $SSH_AUTH_SOCK and .ssh/sockfile points to different file.
+# Make sure they point to the same sock file.
+_ssh_auth_save
 
 # If no agent is running and we have a terminal, run ssh-agent and ssh-add
 if [ "${SSH_AUTH_SOCK}" == "" ] || [ ! -e "${SSH_AUTH_SOCK}" ]
