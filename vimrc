@@ -297,24 +297,6 @@ else
 	:let $VIMFILE_DIR = '.vim'
 endif
 
-
-
-"---------------------------------------------------------------------------
-" KaoriYaでバンドルしているプラグインのための設定
-
-" autofmt: 日本語文章のフォーマット(折り返し)プラグイン.
-set formatexpr=autofmt#japanese#formatexpr()
-
-" vimdoc-ja: 日本語ヘルプを無効化する.
-if has('win32')
-  if kaoriya#switch#enabled('disable-vimdoc-ja')
-    let &rtp = join(filter(split(&rtp, ','), 'v:val !~ "vimdoc-ja"'), ',')
-  endif
-endif
-
-" Copyright (C) 2011 KaoriYa/MURAOKA Taro
-
-
 "---------------------------------------------------------------------------
 " to make vimdiff look prettier
 hi DiffAdd    ctermfg=black ctermbg=2
@@ -400,6 +382,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'tell-k/vim-autopep8'
 
 call vundle#end()
 filetype plugin indent on
@@ -467,6 +450,8 @@ let g:ycm_python_binary_path = 'python3'
 
 " for Rust
 let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
+" for Rust
+let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
 
 " fswitch
 " Switch to the file and load it into the current window
@@ -497,3 +482,8 @@ let python_highlight_all = 1
 
 " vim-clang-format
 autocmd FileType c,cpp ClangFormatAutoEnable
+let g:clang_format#detect_style_file = 1
+
+" vim-autopep8
+let g:autopep8_disable_show_diff = 1
+let g:autopep8_aggressive = 2
