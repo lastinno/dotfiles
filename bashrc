@@ -146,7 +146,7 @@ export HOSTNAME=`hostname`
 function _ssh_auth_save
 {
   _sock=~/.ssh/ssh_auth_sock.$HOSTNAME
-  if [ ! -e "${_sock}" ]
+  if [ ! -e "${_sock}" ] && [ "${SSH_AUTH_SOCK}" != "" ]
   then
     ln -sf ${SSH_AUTH_SOCK} ${_sock}
   fi
