@@ -185,4 +185,5 @@ source $HOME/.cargo/env
 #----------------
 if [ -d "$HOME/repos/clojure-1.8.0" ]; then
 	alias clojure='java -cp $HOME/repos/clojure-1.8.0/clojure-1.8.0.jar clojure.main'
+	export PATH="$PATH:$HOME/repos/clojure-1.8.0/bin"
 fi
