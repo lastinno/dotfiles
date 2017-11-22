@@ -23,6 +23,7 @@ files="bashrc
        git-prompt.sh
        ctags
        flake8
+       ycm_extra_conf.py
       "
 
 ##########
