@@ -336,6 +336,13 @@ match RedundantSpaces /\s\+$\| \+\ze\t/
 "endif
 
 "---------------------------------------------------------------------------
+" Delete without cutting
+" https://stackoverflow.com/a/11993928/2431453
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+vnoremap <leader>p "_dP
+
+"---------------------------------------------------------------------------
 " Python
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
