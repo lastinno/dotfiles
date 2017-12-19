@@ -459,8 +459,7 @@ let g:ycm_python_binary_path = 'python3'
 
 " for Rust
 let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
-" for Rust
-let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
+let g:rustfmt_autosave = 1
 
 " fswitch
 " Switch to the file and load it into the current window
