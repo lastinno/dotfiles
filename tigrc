@@ -1,2 +1,4 @@
 set tab-size = 4
 set line-graphics = yes
+set commit-order = default
+set main-options = -n 1000
