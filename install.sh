@@ -55,6 +55,11 @@ then
 fi
 vim +PluginInstall +qall
 
+if [ ! -e ~/.tmux/plugins/tpm ]
+then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 mkdir -p ~/.vimtmp
 mkdir -p ~/.tmux
 

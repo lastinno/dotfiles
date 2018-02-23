@@ -107,8 +107,8 @@ endif
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
 "
-" 検索時に大文字小文字を無視 (noignorecase:無視しない)
-set ignorecase
+" 検索時に大文字小文字を無視しない
+set noignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
 set smartcase
 " case insensitive file name completion
@@ -391,6 +391,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-fireplace'
+Plugin 'guns/vim-clojure-highlight'
 
 call vundle#end()
 filetype plugin indent on
@@ -414,8 +415,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_mode_map = {
-        \ "mode": "passive",
-        \ "active_filetypes": ["python", "rust", "typescript"],
+        \ "mode": "active",
+        \ "active_filetypes": ["python", "rust", "typescript", "cpp"],
         \ "passive_filetypes": ["sh"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
