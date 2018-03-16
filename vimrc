@@ -133,9 +133,11 @@ au BufNewFile,BufRead *.hpp  set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.js   set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.ts   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 au BufRead,BufNewFile *.ts   set filetype=typescript
+au BufNewFile,BufRead *.vue  set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufRead,BufNewFile *.rs   set nowrap tabstop=4 shiftwidth=4
 au BufRead,BufNewFile *.rs   set filetype=rust
 au BufNewFile,BufRead *.yml  set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
+au BufNewFile,BufRead *.pp   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
@@ -155,8 +157,8 @@ set formatoptions+=mM
 "---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
 "
-" 行番号を非表示 (number:表示)
-set nonumber
+" 行番号を表示
+set number
 " ルーラーを表示 (noruler:非表示)
 set ruler
 " タブや改行を表示 (list:表示)
@@ -298,16 +300,6 @@ else
 endif
 
 "---------------------------------------------------------------------------
-" to make vimdiff look prettier
-hi DiffAdd    ctermfg=black ctermbg=2
-hi DiffChange ctermfg=black ctermbg=3
-hi DiffDelete ctermfg=black ctermbg=6
-hi DiffText   ctermfg=black ctermbg=7
-
-" enable editing in vimdiff
-set noro
-
-"---------------------------------------------------------------------------
 " tab window settings
 nnoremap <S-Tab> gt
 nnoremap <Tab><Tab> gT
@@ -391,7 +383,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-fireplace'
-Plugin 'guns/vim-clojure-highlight'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'yukinarit/vim-one'
 
 call vundle#end()
 filetype plugin indent on
@@ -458,7 +451,7 @@ let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python3'
 let g:ycm_python_binary_path = 'python3'
 
 " for Rust
-let g:ycm_rust_src_path = $HOME . '/repos/rust-1.15.1/src'
+let g:ycm_rust_src_path = $HOME . '/repos/rust/src'
 let g:rustfmt_autosave = 1
 
 " fswitch
@@ -495,3 +488,23 @@ let g:clang_format#detect_style_file = 1
 " vim-autopep8
 let g:autopep8_disable_show_diff = 1
 let g:autopep8_aggressive = 2
+
+" vim-one
+colorscheme one
+let g:one_allow_italics = 1
+set background=dark
+
+"---------------------------------------------------------------------------
+" to make vimdiff look prettier
+" This settings should be after the colorscheme to avoid it being overriden.
+hi DiffAdd    ctermfg=black ctermbg=2
+hi DiffChange ctermfg=black ctermbg=3
+hi DiffDelete ctermfg=black ctermbg=6
+hi DiffText   ctermfg=black ctermbg=7
+"highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+"highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+"highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+"highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
+" enable editing in vimdiff
+set noro
