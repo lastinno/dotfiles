@@ -22,7 +22,7 @@ re = reset
 rb = rebase
 rbc = rebase --continue
 rba = rebase --abort
-df = diff
+df = diff --color-moved
 dt = difftool
 fc = fetch
 log = log -p
@@ -37,6 +37,7 @@ grep = auto
 
 [diff]
 tool = vimdiff
+colorMoved = dimmed_zebra
 
 [difftool]
 prompt = false
