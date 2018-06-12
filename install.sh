@@ -63,4 +63,8 @@ fi
 mkdir -p ~/.vimtmp
 mkdir -p ~/.tmux
 
+# install fisherman
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+fisher z
+
 . ~/.bashrc
