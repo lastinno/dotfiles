@@ -126,6 +126,7 @@ if [ -d "${PYENV_ROOT}" ]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+alias pyenv="PYTHON_CONFIGURE_OPTS=--enable-shared pyenv"
 
 #----------------
 # js
@@ -188,8 +189,3 @@ if [ -d "$HOME/repos/clojure-1.8.0" ]; then
 	alias clojure='java -cp $HOME/repos/clojure-1.8.0/clojure-1.8.0.jar clojure.main'
 	export PATH="$PATH:$HOME/repos/clojure-1.8.0/bin"
 fi
-
-#----------------
-# Fish
-#----------------
-fish --version -v foo >/dev/null 2>&1 && fish

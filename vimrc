@@ -20,20 +20,16 @@ if 1 && (!exists('g:no_vimrc_example') || g:no_vimrc_example == 0)
 endif
 
 "---------------------------------------------------------------------------
-" 検索の挙動に関する設定:
+" Search
 "
-" 検索時に大文字小文字を無視しない
-set noignorecase
-" 大文字小文字の両方が含まれている場合は大文字小文字を区別
+set ignorecase
 set smartcase
-" case insensitive file name completion
 set wildignorecase
 set wildmode=list,full
 
 "---------------------------------------------------------------------------
 " 編集に関する設定:
 "
-" タブの画面上での幅
 set tabstop=4
 
 " language specific tab and space settings
@@ -54,41 +50,24 @@ au BufRead,BufNewFile *.rs   set filetype=rust
 au BufNewFile,BufRead *.yml  set nowrap tabstop=2 shiftwidth=2 autoindent expandtab
 au BufNewFile,BufRead *.pp   set nowrap tabstop=4 shiftwidth=4 autoindent expandtab
 
-" タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
-" 自動的にインデントする (noautoindent:インデントしない)
 set autoindent
-" バックスペースでインデントや改行を削除できるようにする
 set backspace=indent,eol,start
-" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
 set wrapscan
-" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
 set showmatch
-" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
 set wildmenu
-" テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
 
 "---------------------------------------------------------------------------
-" GUI固有ではない画面表示の設定:
+" Display
 "
-" 行番号を表示
 set number
-" ルーラーを表示 (noruler:非表示)
 set ruler
-" タブや改行を表示 (list:表示)
 set nolist
-" どの文字でタブや改行を表示するかを設定
-"set listchars=tab:>-,extends:<,trail:-,eol:<
-" 長い行を折り返して表示 (nowrap:折り返さない)
 set nowrap
-" 常にステータス行を表示 (詳細は:he laststatus)
 set laststatus=2
-" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
 set cmdheight=2
-" コマンドをステータス行に表示
 set showcmd
-" タイトルを表示
 set title
 
 "---------------------------------------------------------------------------
@@ -121,7 +100,6 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2 " Always display tabline
 
-
 "---------------------------------------------------------------------------
 " Highlight
 "
@@ -136,7 +114,6 @@ highlight Special cterm=bold
 "---------------------------------------------------------------------------
 " files
 "
-
 " file backups and undo files
 if has('win32')
   set backupdir=$HOME/vimtmp
@@ -235,14 +212,6 @@ highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/
 
 "---------------------------------------------------------------------------
-" Highlight 80 column line
-"if exists('+colorcolumn')
-"	set colorcolumn=80
-"else
-"	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-"endif
-
-"---------------------------------------------------------------------------
 " Delete without cutting
 " https://stackoverflow.com/a/11993928/2431453
 nnoremap <leader>d "_d
@@ -256,7 +225,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 "---------------------------------------------------------------------------
 " CMake
 au BufNewFile,BufRead CMakeLists.txt set filetype=cmake
-
+au BufNewFile,BufRead *.cmake set filetype=cmake
 
 "
 "---------------------------------------------------------------------------
@@ -271,6 +240,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'godlygeek/tabular'
@@ -300,6 +270,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-fireplace'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'yukinarit/vim-one'
+Plugin 'cespare/vim-toml'
 
 call vundle#end()
 filetype plugin indent on
