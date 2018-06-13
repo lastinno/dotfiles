@@ -24,9 +24,11 @@ files="bashrc
        ctags
        flake8
        ycm_extra_conf.py
+       config/fish/config.fish
       "
 
-##########
+# Fish
+mkdir -p ~/.config/fish
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
@@ -47,7 +49,7 @@ do
   ln -s $dir/$file ~/.$file
 done
 
-# install vim vundle
+# Vim
 mkdir -p ~/.vim/bundle
 if [ ! -e ~/.vim/bundle/Vundle.vim ]
 then
@@ -61,10 +63,8 @@ then
 fi
 
 mkdir -p ~/.vimtmp
-mkdir -p ~/.tmux
 
-# install fisherman
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher z
+# Tmux
+mkdir -p ~/.tmux
 
 . ~/.bashrc
