@@ -70,6 +70,8 @@ set cmdheight=2
 set showcmd
 set title
 
+syntax on
+
 "---------------------------------------------------------------------------
 " Tabline
 "
