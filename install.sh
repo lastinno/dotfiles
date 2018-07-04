@@ -9,6 +9,12 @@
 dir=~/repos/dotfiles              # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 
+function install_fish_plugin
+{
+  local name=$1
+  fish -c "echo installing fish plugin ${name}.; fisher ${name} 2> /dev/null"
+}
+
 # list of files/folders to symlink in homedir
 files="bashrc
        bash_aliases
@@ -29,6 +35,12 @@ files="bashrc
 
 # Fish
 mkdir -p ~/.config/fish
+if [ ! -e $HOME/.config/fish/functions/fisher.fish ]
+then
+  curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+fi
+install_fish_plugin z
+install_fish_plugin tuvistavie/fish-ssh-agent
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
