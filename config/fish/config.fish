@@ -11,12 +11,12 @@ alias vi "vim"
 alias top "top -oRES"
 
 # Python
-# set -x PATH "$HOME/.pyenv/bin" $PATH
-# if test -e $HOME/.pyenv
-#   set -x PYTHON_CONFIGURE_OPTS --enable-shared
-#   status --is-interactive; and . (pyenv init -|psub)
-#   status --is-interactive; and . (pyenv virtualenv-init -|psub)
-# end
+set -x PATH "$HOME/.pyenv/bin" $PATH
+if test -e $HOME/.pyenv
+  set -x PYTHON_CONFIGURE_OPTS --enable-shared
+  status --is-interactive; and . (pyenv init -|psub)
+  status --is-interactive; and . (pyenv virtualenv-init -|psub)
+end
 
 function _ssh_auth_save
   set -l _sock $HOME/.ssh/ssh_auth_sock.(hostname)
