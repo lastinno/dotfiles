@@ -20,10 +20,14 @@ alias top "top -oRES"
 
 function _ssh_auth_save
   set -l _sock $HOME/.ssh/ssh_auth_sock.(hostname)
-  if [ $SSH_AUTH_SOCK ]; and test -L $_sock
-    return 0
-  else if [ $SSH_AUTH_SOCK ]; and not test -L $_sock 
-    ln -sf $SSH_AUTH_SOCK $_sock
+  if [ $SSH_AUTH_SOCK ]; and test -e $SSH_AUTH_SOCK
+    if test -L $_sock
+      # Everything is OK, do nothing.
+      return 0
+    else
+      ln -sf $SSH_AUTH_SOCK $_sock
+      return 0
+    end
   else
     rm -f $_sock
 	set -x SSH_AUTH_SOCK
