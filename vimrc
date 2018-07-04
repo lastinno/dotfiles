@@ -246,7 +246,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'quickrun.vim'
 Plugin 'mrtazz/simplenote.vim'
 "Plugin 'Shougo/unite.vim'
@@ -273,6 +273,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'yukinarit/vim-one'
 Plugin 'cespare/vim-toml'
+Plugin 'dag/vim-fish'
 
 call vundle#end()
 filetype plugin indent on
@@ -336,7 +337,7 @@ map <C-\> :tab split<CR>:YcmComplete GoTo<CR>
 
 " for Python
 let g:ycm_path_to_python_interpreter = $HOME . '/.pyenv/shims/python3'
-let g:ycm_python_binary_path = 'python3'
+let g:ycm_python_binary_path = 'python'
 
 " for Rust
 let g:ycm_rust_src_path = $HOME . '/repos/rust/src'
@@ -385,6 +386,9 @@ set background=dark
 " gist-vim
 let g:gist_show_privates = 1
 let g:gist_post_private = 1
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
 
 "---------------------------------------------------------------------------
 " to make vimdiff look prettier
