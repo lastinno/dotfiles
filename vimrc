@@ -305,7 +305,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8', 'mypy']
-"let g:loaded_syntastic_python_pylint_checker = 0
+
+" Load if there is a custom typeshed package installed on system.
+let typeshed = system("python -c 'import typeshed, os; print(os.path.dirname(typeshed.__file__))' || true")
+if typeshed != ""
+  let g:syntastic_python_mypy_args = " --custom-typeshed-dir " . typeshed . "/"
+endif
 
 " simplenote
 let g:SimplenoteUsername = $SIMPLENOTEUSERNAME
