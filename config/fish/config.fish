@@ -9,6 +9,7 @@ alias grep "grep --color=auto"
 alias rm "rm -i"
 alias vi "vim"
 alias top "top -oRES"
+alias tmux "_ssh_auth_save; command tmux"
 
 # Python
 set -x PATH "$HOME/.pyenv/bin" $PATH
@@ -18,34 +19,43 @@ if test -e $HOME/.pyenv
   status --is-interactive; and . (pyenv virtualenv-init -|psub)
 end
 
+set -g _ssh_sock_link $HOME/.ssh/ssh_auth_sock.(hostname)
+
 function _ssh_auth_save
-  set -l _sock $HOME/.ssh/ssh_auth_sock.(hostname)
-  if [ $SSH_AUTH_SOCK ]; and test -e $SSH_AUTH_SOCK
-    if test -L $_sock
-      # Everything is OK, do nothing.
-      return 0
-    else
-      ln -sf $SSH_AUTH_SOCK $_sock
-      return 0
-    end
-  else
-    rm -f $_sock
-	set -x SSH_AUTH_SOCK
-    return 1
+  set -l sock_linked (readlink -f $_ssh_sock_link)
+  if [ -e $SSH_AUTH_SOCK ]; and [ "$SSH_AUTH_SOCK" = "$sock_linked" ]
+    # Everything is OK, do nothing.
+    return 0
   end
+
+  if [ -e $SSH_AUTH_SOCK ]; and [ "$SSH_AUTH_SOCK" != "$sock_linked" ]
+    # Created symlink to SSH_AUTH_SOCK
+    _remove_sock_link
+    ln -sf $SSH_AUTH_SOCK $_ssh_sock_link
+    return 0
+  end
+
+  _stop_ssh_agent
+  return 1
 end
 
 function _startup_ssh_agent
   if not _ssh_auth_save
     # If no agent is running and we have a terminal, run ssh-agent and ssh-add
-    eval (ssh-agent -c)
-    /usr/bin/tty > /dev/null; ssh-add
+    eval (ssh-agent -c | sed -e 's/setenv/set -x/g')
+    /usr/bin/tty > /dev/null; and ssh-add
     _ssh_auth_save
-	return $status
+    return $status
   end
   return 0
 end
 
-if not _startup_ssh_agent
-  echo Failed to startup ssh-agent.
+function _stop_ssh_agent
+  ssh-agent -k
+  _remove_sock_link
+end
+
+
+function _remove_sock_link
+  rm -f $_ssh_sock_link
 end

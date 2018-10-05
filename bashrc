@@ -104,88 +104,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# User specific environment and startup programs
-ENV=$HOME/.bashrc
-PATH="$HOME/bin:$PATH:$HOME/usr/bin:/usr/local/bin"
-
 # record time of command history
 export HISTTIMEFORMAT='%Y-%m-%d %T '
 
 # CTRL-w deletes back to the last path
 stty werase undef
 bind '\C-w:unix-filename-rubout'
-
-#----------------
-# python
-#----------------
-
-# pyenv
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-alias pyenv="PYTHON_CONFIGURE_OPTS=--enable-shared pyenv"
-
-#----------------
-# js
-#----------------
-export PATH=~/.npm-global/bin:$PATH
-
-#----------------
-# ssh
-#----------------
-# Make sure ssh-agent dies on logout
-#trap '
-#  test -n "${SSH_AGENT_PID}" && eval `ssh-agent -k`;
-#  test -n "${SSH2_AGENT_PID}" && kill ${SSH2_AGENT_PID}
-#' 0
-
-export HOSTNAME=`hostname`
-
-function _ssh_auth_save
-{
-  _sock=~/.ssh/ssh_auth_sock.$HOSTNAME
-  if [ ! -e "${_sock}" ] && [ "${SSH_AUTH_SOCK}" != "" ]
-  then
-    ln -sf ${SSH_AUTH_SOCK} ${_sock}
-  fi
-  export SSH_AUTH_SOCK=${_sock}
-}
-alias tmux="_ssh_auth_save; tmux"
-
-# Sometimes, $SSH_AUTH_SOCK and .ssh/sockfile points to different file.
-# Make sure they point to the same sock file.
-_ssh_auth_save
-
-# If no agent is running and we have a terminal, run ssh-agent and ssh-add
-if [ "${SSH_AUTH_SOCK}" == "" ] || [ ! -e "${SSH_AUTH_SOCK}" ]
-then
-  eval `ssh-agent`
-  /usr/bin/tty > /dev/null && ssh-add
-else
-  _ssh_auth_save
-fi
-
-#----------------
-# Haskell
-#----------------
-export GHC_DOT_APP="/Applications/ghc-7.10.3.app"
-if [ -d "$GHC_DOT_APP" ]; then
-	export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-fi
-
-#----------------
-# Rust
-#----------------
-source $HOME/.cargo/env
-export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
-
-#----------------
-# Clojure
-#----------------
-if [ -d "$HOME/repos/clojure-1.8.0" ]; then
-	alias clojure='java -cp $HOME/repos/clojure-1.8.0/clojure-1.8.0.jar clojure.main'
-	export PATH="$PATH:$HOME/repos/clojure-1.8.0/bin"
-fi
