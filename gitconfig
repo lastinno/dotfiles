@@ -24,7 +24,8 @@ rbc = rebase --continue
 rba = rebase --abort
 df = diff --color-moved
 dt = difftool
-fc = fetch
+fc = fetch --prune
+fca = fetch --all --prune
 log = log -p
 graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 
