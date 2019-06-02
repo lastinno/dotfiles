@@ -62,12 +62,13 @@ do
 done
 
 # Vim
-mkdir -p ~/.vim/bundle
-if [ ! -e ~/.vim/bundle/Vundle.vim ]
+mkdir -p ~/.vim/autoload
+if [ ! -e ~/.vim/autoload/plug.vim ]
 then
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 
 if [ ! -e ~/.tmux/plugins/tpm ]
 then
