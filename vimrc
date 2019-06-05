@@ -140,12 +140,16 @@ au BufNewFile,BufRead *.cmake set filetype=cmake
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 " Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
+Plug 'Glench/Vim-Jinja2-Syntax'
+" Python
 Plug 'vim-python/python-syntax'
+" Rust
 Plug 'rust-lang/rust.vim'
 
 " Language server protocol
