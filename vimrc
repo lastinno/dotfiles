@@ -163,8 +163,13 @@ call plug#end()
 
 " Language server protocol
 
-let g:lsp_signs_enabled = 1         " enable signs
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_diagnostics_echo_cursor = 1
+highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
+" Override ctags keymap with LSP based commands
+map <C-]> :LspDefinition<CR>
+map <C-T> <C-O>
 
 if executable('pyls')
   " pip install python-language-server
