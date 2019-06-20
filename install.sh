@@ -41,6 +41,7 @@ then
 fi
 install_fish_plugin z
 install_fish_plugin tuvistavie/fish-ssh-agent
+install_fish_plugin kennethreitz/fish-pipenv
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
