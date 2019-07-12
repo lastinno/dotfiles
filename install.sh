@@ -6,7 +6,7 @@
 
 ########## Variables
 
-dir=~/repos/dotfiles              # dotfiles directory
+dir="$PWD"                        # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 
 function install_fish_plugin
@@ -57,7 +57,7 @@ echo "...done"
 for file in $files
 do
   echo "Moving any existing dotfiles from ~ to $olddir"
-  mv ~/.$file ~/dotfiles_old/
+  mv -f ~/.$file ~/dotfiles_old/
   echo "Creating symlink to $file in home directory."
   ln -s $dir/$file ~/.$file
 done
